@@ -14,36 +14,6 @@ This agent uses a sequential workflow that orchestrates several sub-agents to pr
     *   **Critique Agent:** This agent reviews the two chapter draft and selects the one that best fits the story's premise and narrative arc.
 3. **Edit Agent:** Once all chapeters are written, the `Edito Agent` performs a final review of the entire story, polishing it for a grammar, flow, and consistensy.
 
-:::mermaid
-flowchart TD
-    %% Nodes
-    user_prompt["User Prompt"]
-    prompt_enhancer("Prompt Enhancer Agent")
-    story_loop{"Story Loop"}
-    parallel_writers["Parallel Writers"]
-    creative_writer("Creative Writer")
-    focused_writer("Focused Writer")
-    critique_agent{"Critique Agent"}
-    editor_agent("Editor Agent")
-    final_story["Final Story"]
-
-    %% Connections
-    user_prompt --> prompt_enhancer
-    prompt_enhancer --> story_loop
-    
-    story_loop --> parallel_writers
-    story_loop --> editor_agent
-    
-    parallel_writers --> creative_writer
-    parallel_writers --> focused_writer
-    
-    creative_writer --> critique_agent
-    focused_writer --> critique_agent
-    
-    critique_agent --> story_loop
-    editor_agent --> final_story
-
-    %% Styling Theme
-    classDef default fill:#E8E5FF,stroke:#8A76F7,stroke-width:1.5px,color:#1A1A1A;
-    linkStyle default stroke:#1A1A1A,stroke-width:2px;
-:::
+<div align="center">
+  <img src="assets/StoryTellerAgentFlow.png" alt="Story Teller Agent Architecture" width="400"/>
+</div>
