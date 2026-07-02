@@ -1,3 +1,4 @@
 google-adk
 langchain_community
+pyyaml
 wikipedia
