@@ -1,0 +1,4 @@
+app_name: collaborative_story_writer
+model_name: gemini-2.5-flash
+n_chapters: 3
+max_words: 100

@@ -1,3 +1,6 @@
+from pathlib import Path
+
+import yaml
 from google.adk.agents import (
     LlmAgent,
     LoopAgent,
@@ -9,12 +12,16 @@ from google.genai import types
 from . import intructions
 
 # --- Configurations constants ---
-APP_NAME = "collaborative_story_writer"
-MODEL_NAME = "gemini-2.5-flash"
+CONFIG_PATH = Path(__file__).with_name("config.yaml")
+with CONFIG_PATH.open("r", encoding="utf-8") as config_file:
+    CONFIG = yaml.safe_load(config_file) or {}
+
+APP_NAME = CONFIG.get("app_name", "collaborative_story_writer")
+MODEL_NAME = CONFIG.get("model_name", "gemini-2.5-flash")
 
 # User-Defined Constraints
-N_CHAPTERS = 3 # Number of chapters to write
-MAX_WORDS = 100 # Max words per chapter
+N_CHAPTERS = int(CONFIG.get("n_chapters", 3))  # Number of chapters to write
+MAX_WORDS = int(CONFIG.get("max_words", 100))  # Max words per chapter
 
 # --- State Keys ---
 KEY_USER_PROMPT = "user_prompt"
